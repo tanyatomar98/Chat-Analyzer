@@ -229,7 +229,7 @@ if verify_data:
     topMsg = message_df['Message'].value_counts().head(10)
     pxMsg = px.bar(topMsg)
     st.plotly_chart(pxMsg)
-elif uploadFile & !(verify_data):
+elif uploadFile & (verify_data==[]):
     st.header("File Containe unwanted data")
     
 else:
