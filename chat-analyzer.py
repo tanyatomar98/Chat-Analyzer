@@ -56,7 +56,7 @@ def getData(s):
         msg = msg.strip()
     return date, time, author, msg
 
-uploadFile = st.file_uploader("Choose file to upload", type="txt")
+uploadFile = st.file_uploader("Choose WhatsApp Chat to upload(.txt file only)", type="txt")
 date, time, author = None, None, None
 msgBuffer = []  # to store multiline msg
 verify_data = []
@@ -229,6 +229,8 @@ if verify_data:
     topMsg = message_df['Message'].value_counts().head(10)
     pxMsg = px.bar(topMsg)
     st.plotly_chart(pxMsg)
-
+elif uploadFile & !(verify_data):
+    st.header("File Containe unwanted data")
+    
 else:
     st.header("Upload File to see data")
