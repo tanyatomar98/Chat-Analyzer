@@ -76,8 +76,6 @@ if uploadFile is not None:
         else:
             msgBuffer.append(line)
     
-else:
-    st.header("Upload File to Analyze data")
     
 if verify_data:
     #############################################################################
@@ -232,6 +230,9 @@ if verify_data:
     topMsg = message_df['Message'].value_counts().head(10)
     pxMsg = px.bar(topMsg)
     st.plotly_chart(pxMsg)
+    
+elif uploadFile is not None:
+    st.header("File Contain unwanted data")
 else:
-    st.header("File Containe unwanted data")
+    st.header("Upload File to Analyze data")
 
